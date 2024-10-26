@@ -19,18 +19,11 @@ d_date as (
     from {{ ref('dim_date') }}
 )
 select 
-    f_sales.orderid, 
-    d_customer.companyname, 
-    d_customer.contactname, 
-    d_customer.contacttitle, 
-    d_customer.address, 
-    d_customer.city, 
-    d_customer.country,
-    d_employee.employeenamefirstlast, 
-    d_employee.employeetitle,
-    d_product.productname, 
-    d_product.categoryname,
-    d_date.date as orderdate,
+    d_customer.*,
+    d_employee.*,
+    d_product.*,
+    d_date.*,
+    f_sales.OrderID,
     f_sales.quantity, 
     f_sales.extendedpriceamount, 
     f_sales.discountamount, 
